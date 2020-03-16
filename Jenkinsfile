@@ -6,6 +6,9 @@ pipeline {
             always {
               sh ' echo This will always run'
             }
+            success {
+                   sh 'echo I succeeeded!'
+                }
             failure {
               sh ' echo This will run only if failed'
             }
