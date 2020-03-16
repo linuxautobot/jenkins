@@ -7,5 +7,8 @@ pipeline {
                     def usersJson   = sh(returnStdout: true, script:cmd)
                     println "Past curl call."      
         }
+             steps {
+             sh ' echo fail me please'
+         }
     }
 }
