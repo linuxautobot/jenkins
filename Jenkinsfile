@@ -4,13 +4,26 @@ pipeline {
         stage('build') {
             steps {         
                 post {
-    
-                    script {
-                        def r = sh script: 'wget -q https://testgoogle.com -O /dev/null', returnStatus: true
-                        currentBuild.result = 'FAILURE' 
-                        return (r == 0);
+                    always {
+                        script {
+                            def r = sh script: 'wget -q https://testgoogle.com -O /dev/null', returnStatus: true
+                            currentBuild.result = 'FAILURE' 
+                            return (r == 0);
+                        }
                     }
+                }  
+                success {
+                    echo 'I succeeeded!'
                 }
+                unstable {
+                    echo 'I am unstable :/'
+                }
+                failure {
+                    echo 'I failed :('
+                }
+                changed {
+                    echo 'Things were different before...'
+                } 
             }
         }
     }
