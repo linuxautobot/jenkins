@@ -1,6 +1,5 @@
 pipeline {
     agent { label 'master' }
-    stages {
        stage('test') {
                     def cmd = 'curl -i  https://testgoogle.com'
                     println "cmd[${cmd}]" 
@@ -10,5 +9,5 @@ pipeline {
              steps {
              sh ' echo fail me please'
          }
-    }
+    
 }
