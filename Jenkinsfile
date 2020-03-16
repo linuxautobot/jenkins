@@ -4,8 +4,9 @@ pipeline {
         stage('build') {
             steps {
                    sh ''' 
-                          set -x 
-                          DomainName="http://beinformed-server:8080"; curl --Silent $DomainName &> /dev/null;
+ 
+                          DomainName="http://beinformed-server:8080"
+                          curl --Silent $DomainName &> /dev/null;
                           if [ "$?" -eq "0" ]
                               then
                                   echo "Ping Pass, Test Fail - `date`"; exit 0
