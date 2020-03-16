@@ -2,7 +2,10 @@ pipeline {
     agent any 
     stages {
         stage('build') {
-            steps {         
+            steps {   
+                echo 'Hello World'
+                 }
+
                 post {
                     always {
                         script {
@@ -24,7 +27,7 @@ pipeline {
                 changed {
                     echo 'Things were different before...'
                 } 
-            }
+            
         }
     }
 }
