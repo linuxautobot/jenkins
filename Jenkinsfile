@@ -4,18 +4,18 @@ pipeline {
        stage('test') {
         post {
             always {
-              sh 'This will always run'
+              sh ' echo This will always run'
             }
             failure {
-              sh 'This will run only if failed'
+              sh ' echo This will run only if failed'
             }
             changed {
-              sh 'This will run only if the state of the Pipeline has changed'
+              sh ' echo This will run only if the state of the Pipeline has changed'
             }
          }
 
          steps {
-             sh 'fail me please'
+             sh ' echo fail me please'
          }
        }
     }
