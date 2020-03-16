@@ -8,7 +8,7 @@ pipeline {
                         waitUntil {
                            script {
                              def r = sh script: 'wget -q http://google.com -O /dev/null', returnStatus: true
-                             return (r == 0);
+                             return (r == 100);
                            }
                         }
                     }
