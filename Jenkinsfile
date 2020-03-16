@@ -1,26 +1,28 @@
 pipeline {
-    agent { label 'master' }
+    agent any 
     stages {
-       stage('test') {
-        post {
-            always {
-              sh ' echo This will always run'
-            }
-            success {
-                   sh 'echo I succeeeded!'
+        stage('build') {
+                 post {
+                    always {
+                        script {
+                            def r = sh script: 'wget -q https://testgoogle.com -O /dev/null', returnStatus: true
+                            currentBuild.result = 'FAILURE' 
+                            return (r == 0);
+                        }
+                    }
+                }  
+                success {
+                    echo 'I succeeeded!'
                 }
-            failure {
-              sh ' echo This will run only if failed'
+                unstable {
+                    echo 'I am unstable :/'
+                }
+                failure {
+                    echo 'I failed :('
+                }
+                changed {
+                    echo 'Things were different before...'
+                } 
             }
-            changed {
-              sh ' echo This will run only if the state of the Pipeline has changed'
-            }
-         }
-
-         steps {
-             sh ' echo fail me please'
-         }
-       }
+        }
     }
-
-}
