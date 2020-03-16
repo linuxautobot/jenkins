@@ -10,7 +10,7 @@ pipeline {
               sh 'This will run only if failed'
             }
             changed {
-              sh 'This will run only if the state of the Pipeline has changed')
+              sh 'This will run only if the state of the Pipeline has changed'
             }
          }
 
