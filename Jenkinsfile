@@ -7,8 +7,9 @@ pipeline {
             timeout(5) {
                         waitUntil {
                            script {
-                             def r = sh script: 'wget -q http://google.com -O /dev/null', returnStatus: true
-                             return (r == 100);
+                             def r = sh script: 'wget -q https://google.com -O /dev/null', returnStatus: true
+                            currentBuild.result = 'SUCCESS' 
+                            return (r == 0);
                            }
                         }
                     }
