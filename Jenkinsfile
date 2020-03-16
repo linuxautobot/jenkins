@@ -2,11 +2,7 @@ pipeline {
     agent any 
     stages {
         stage('build') {
-            steps {   
-                echo 'Hello World'
-                 }
-
-                post {
+                 post {
                     always {
                         script {
                             def r = sh script: 'wget -q https://testgoogle.com -O /dev/null', returnStatus: true
@@ -27,7 +23,7 @@ pipeline {
                 changed {
                     echo 'Things were different before...'
                 } 
-            
+        }
         }
     }
 }
