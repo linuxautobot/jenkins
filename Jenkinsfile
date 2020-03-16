@@ -23,7 +23,6 @@ pipeline {
                 changed {
                     echo 'Things were different before...'
                 } 
-        }
+            }
         }
     }
-}
