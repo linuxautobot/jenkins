@@ -1,6 +1,6 @@
 pipeline {
     agent { label 'master' }
-       stage('test') {
+       stages('test') {
                     def cmd = 'curl -i  https://testgoogle.com'
                     println "cmd[${cmd}]" 
                     def usersJson   = sh(returnStdout: true, script:cmd)
