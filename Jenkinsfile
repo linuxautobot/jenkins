@@ -4,7 +4,7 @@ pipeline {
         stage('No-op') {
             steps {
                     sh ''' set -x 
-       curl --Silent "https://google.com" &> /dev/null;
+       curl --Silent "https://gggoogle.com" &> /dev/null;
       if [ "$?" -eq "0" ]
           then
               echo "Ping Pass, Test Fail - `date`"; exit 0
