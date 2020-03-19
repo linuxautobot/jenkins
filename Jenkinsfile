@@ -4,7 +4,7 @@ pipeline {
         stage('No-op') {
             steps {
                     sh ''' set -x 
-      DomainName="http://beinformed-server:8080"; curl --Silent $DomainName &> /dev/null;
+       curl --Silent "https://google.com" &> /dev/null;
       if [ "$?" -eq "0" ]
           then
               echo "Ping Pass, Test Fail - `date`"; exit 0
