@@ -3,14 +3,17 @@ pipeline {
     stages {
         stage('No-op') {
             steps {
-                    sh ''' set -x 
-       curl --Silent "https://gggoogle.com" &> /dev/null;
-      if [ "$?" -eq "0" ]
-          then
-              echo "Ping Pass, Test Fail - `date`"; exit 0
-          else
-              echo "Ping Fail, Test Pass - `date`"
-      fi '''
+ 
+                        try {
+            sh 'exit 1'
+        }
+        catch (exc) {
+            echo 'Something failed, I should sound the klaxons!'
+            throw
+        }
+    }
+                
+                
             }
         }
     }
