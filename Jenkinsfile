@@ -4,13 +4,23 @@ pipeline {
         stage('No-op') {
             steps {
  
-                        url="https://google.com"
+                 script {
+                    response = sh(
+                    returnStdout: true, 
+                    script: "curl -i  https://google.com "
+                    );
+                    // The response is now in the variable 'response'
 
-                        int status = sh(script: "curl -sLI -w '%{http_code}' $url -o /dev/null", returnStdout: true)
-
-                        if (status != 200 && status != 201) {
-                            error("Returned status code = $status when calling $url")
-                        }
+                    // Then you can regex to read the status. 
+                    // For some reasen, the regex needs to match the entire result found.
+                    // (?s) was necessary for the multiline response.
+                    def finder = (response =~ /(?s).*HTTP/1.1 (\d{3}).*/);
+                    if (finder) {
+                    echo 'Status ' + finder.group(1);
+                    } else {
+                    echo "no match";
+                    }
+                }
 
 
 
