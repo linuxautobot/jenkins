@@ -7,7 +7,7 @@ pipeline {
             steps {
  
                  script {
-                        def url = "https://google.com"
+                        def url = "https://ggggggoogle.com"
                         int status = sh(script: "curl -sLI -w '%{http_code}' $url -o /dev/null", returnStdout: true)
                         if (status != 200 && status != 201) {
                               error("Returned status code = $status when calling $url")
