@@ -9,7 +9,7 @@ pipeline {
                             }
         catch (exc) {
                     echo 'Something failed, I should sound the klaxons!'
-                    throw
+                    thrown ew Exception("Throw to stop pipeline")
                     }
                 }              
             }
