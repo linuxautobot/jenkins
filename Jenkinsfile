@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurperClassic 
+
 pipeline {
     agent any
     stages {
@@ -14,7 +16,6 @@ pipeline {
                     // Then you can regex to read the status. 
                     // For some reasen, the regex needs to match the entire result found.
                     // (?s) was necessary for the multiline response.
-                        import groovy.json.JsonSlurper
                         def jsonSlurper = new JsonSlurper()
                         def data = jsonSlurper.parseText("${response}")
                         return data.id
