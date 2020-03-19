@@ -4,13 +4,16 @@ pipeline {
         stage('No-op') {
             steps {
  
-                        try {
-                                sh 'exit 1'
-                            }
-        catch (exc) {
-                    echo 'Something failed, I should sound the klaxons!'
-                    thrown ew Exception("Throw to stop pipeline")
-                    }
+                        url="https://google.com"
+
+                        int status = sh(script: "curl -sLI -w '%{http_code}' $url -o /dev/null", returnStdout: true)
+
+                        if (status != 200 && status != 201) {
+                            error("Returned status code = $status when calling $url")
+                        }
+
+
+
                 }              
             }
         }
