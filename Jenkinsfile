@@ -5,18 +5,16 @@ pipeline {
             steps {
  
                         try {
-            sh 'exit 1'
-        }
+                                sh 'exit 1'
+                            }
         catch (exc) {
-            echo 'Something failed, I should sound the klaxons!'
-            throw
-        }
-   
-                
-                
+                    echo 'Something failed, I should sound the klaxons!'
+                    throw
+                    }
+                }              
             }
         }
-    }
+    
     post {
         always {
             echo 'One way or another, I have finished'
