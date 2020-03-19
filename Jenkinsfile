@@ -11,7 +11,7 @@ pipeline {
             echo 'Something failed, I should sound the klaxons!'
             throw
         }
-    }
+   
                 
                 
             }
